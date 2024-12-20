@@ -2,7 +2,6 @@ import About from "@/components/About";
 import { AnimatedText } from "@/components/AnimatedText";
 import FileUpload from "@/components/FileUpload";
 import { Navbar } from "@/components/NavBar/NavBar";
-import { Testimonials } from "@/components/testimonials";
 import { toast } from "@/hooks/use-toast";
 import { useUser } from "@clerk/clerk-react";
 import axios from "axios";

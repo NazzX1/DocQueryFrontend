@@ -46,7 +46,7 @@ const FileUpload = () => {
       return;
     }
 
-    const modal = document.getElementById('my_modal_5');
+    const modal = document.getElementById('my_modal_5')as HTMLDialogElement;
     modal?.showModal();
     setLoader(true);
 
@@ -100,7 +100,8 @@ const FileUpload = () => {
     
       setLoader(false);
       modal?.close();
-    } catch (error) {
+    } catch (error : unknown) {
+      console.log(error)
       toast({
         description: 'Failed to Upload !!!',
       });

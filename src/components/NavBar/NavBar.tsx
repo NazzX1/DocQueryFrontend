@@ -1,7 +1,6 @@
 import { useState } from "react";
 import {
   NavigationMenu,
-  NavigationMenuItem,
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
 import {

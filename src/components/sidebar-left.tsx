@@ -2,21 +2,17 @@
 
 import * as React from "react"
 import {
-  Blocks,
-  Calendar,
   Home,
   Inbox,
   MessageCircleQuestion,
   Search,
   Settings2,
   Sparkles,
-  Trash2,
 } from "lucide-react"
 
 import { NavFavorites } from "@/components/nav-favorites"
 import { NavMain } from "@/components/nav-main"
 import { NavSecondary } from "@/components/nav-secondary"
-import { NavWorkspaces } from "@/components/nav-workspaces"
 import {
   Sidebar,
   SidebarContent,
@@ -205,6 +201,7 @@ const data = {
   //     ],
   //   },
   // ],
+  
 }
 
 export function SidebarLeft({
@@ -217,7 +214,7 @@ export function SidebarLeft({
         <NavMain items={data.navMain} />
       </SidebarHeader>
       <SidebarContent>
-        <NavFavorites favorites={data.favorites} />
+        <NavFavorites favorites={data.favorites} onSelect={async ()=>{}} />
         {/* <NavWorkspaces workspaces={data.workspaces} /> */}
         <NavSecondary items={data.navSecondary} className="mt-auto" />
       </SidebarContent>

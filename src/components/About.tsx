@@ -1,8 +1,12 @@
-import React from 'react';
 import { useInView } from 'react-intersection-observer';
 import { motion } from 'framer-motion';
 
-const faqData = [
+interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+const faqData: FaqItem[] = [
   {
     question: 'What is DocQuery?',
     answer: 'DocQuery is an AI-powered platform that helps you interact with, summarize, and manage your PDF documents.',
@@ -21,7 +25,6 @@ const About = () => {
   return (
     <div className="flex w-full max-w-[812px] flex-col gap-10 pt-40 mobile:max-w-full">
       <div className="px-24">
-
         <div className="space-y-8">
           {faqData.map((item, index) => (
             <div key={index} className="flex flex-col gap-4">
@@ -38,7 +41,12 @@ const About = () => {
   );
 };
 
-const QuestionBubble = ({ question, index }) => {
+interface QuestionBubbleProps {
+  question: string;
+  index: number;
+}
+
+const QuestionBubble: React.FC<QuestionBubbleProps> = ({ question, index }) => {
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.5, // Trigger when 50% of the element is in view
@@ -50,6 +58,7 @@ const QuestionBubble = ({ question, index }) => {
       className="flex justify-start"
       initial={{ opacity: 0, x: -40 }}
       animate={{ opacity: inView ? 1 : 0, x: inView ? 0 : -40 }}
+      exit={{ opacity: 0, x: -40 }} // Added exit animation
       transition={{ duration: 1.2, delay: 0.3 * index }}
     >
       <div className="max-w-[70%] p-4 bg-blue-500 text-white rounded-lg shadow-md">
@@ -59,7 +68,12 @@ const QuestionBubble = ({ question, index }) => {
   );
 };
 
-const AnswerBubble = ({ answer, index }) => {
+interface AnswerBubbleProps {
+  answer: string;
+  index: number;
+}
+
+const AnswerBubble: React.FC<AnswerBubbleProps> = ({ answer, index }) => {
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.5,
@@ -71,6 +85,7 @@ const AnswerBubble = ({ answer, index }) => {
       className="flex justify-end"
       initial={{ opacity: 0, x: 40 }}
       animate={{ opacity: inView ? 1 : 0, x: inView ? 0 : 40 }}
+      exit={{ opacity: 0, x: 40 }} // Added exit animation
       transition={{ duration: 1.2, delay: 0.3 * index + 0.2 }}
     >
       <div className="max-w-[70%] p-4 bg-gray-100 text-black rounded-lg shadow-md">
